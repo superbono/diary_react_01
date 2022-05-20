@@ -6,16 +6,21 @@ function App() {
   const [state, setState] = useState({
     title: "",
     content: "",
+    author: "",
   });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(state.title, state.content);
+    console.log(state.title, state.content, state.author);
     clearInput();
   };
 
+  const handleChange = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
+
   const clearInput = () => {
-    setState({ title: "", content: "" });
+    setState({ title: "", content: "", author: "" });
   };
 
   return (
@@ -23,25 +28,17 @@ function App() {
       <DiaryEditor />
       <form onSubmit={onSubmit}>
         <div>
-          <input
-            value={state.title}
-            onChange={(e) => {
-              setState({ title: e.target.value, content: state.content });
-            }}
-          />
+          <input name="title" value={state.title} onChange={handleChange} />
         </div>
         <div>
           <textarea
+            name="content"
             value={state.content}
-            onChange={(e) => {
-              setState({ title: state.title, content: e.target.value });
-            }}
+            onChange={handleChange}
           />
         </div>
         <div>
-          <select>
-            <option>1</option>
-          </select>
+          <input name="author" value={state.author} onChange={handleChange} />
         </div>
         <button type="submit">저장하기</button>
       </form>
