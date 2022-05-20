@@ -7,11 +7,12 @@ function App() {
     title: "",
     content: "",
     author: "",
+    emotion: 1,
   });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(state.title, state.content, state.author);
+    console.log(state.title, state.content, state.author, state.emotion);
     clearInput();
   };
 
@@ -20,7 +21,7 @@ function App() {
   };
 
   const clearInput = () => {
-    setState({ title: "", content: "", author: "" });
+    setState({ title: "", content: "", author: "", emotion: 1 });
   };
 
   return (
@@ -39,6 +40,15 @@ function App() {
         </div>
         <div>
           <input name="author" value={state.author} onChange={handleChange} />
+        </div>
+        <div>
+          <select value={state.emotion} name="emotion" onChange={handleChange}>
+            <option value={1}>1</option>
+            <option value={2}>2</option>
+            <option value={3}>3</option>
+            <option value={4}>4</option>
+            <option value={5}>5</option>
+          </select>
         </div>
         <button type="submit">저장하기</button>
       </form>
