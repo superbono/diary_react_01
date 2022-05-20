@@ -3,44 +3,40 @@ import React, { useState } from "react";
 import DiaryEditor from "./components/DiaryEditor";
 
 function App() {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-
-  const onChangeTitle = (e) => {
-    setTitle(e.target.value);
-  };
-
-  const onChangeContent = (e) => {
-    setContent(e.target.value);
-  };
+  const [state, setState] = useState({
+    title: "",
+    content: "",
+  });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(title, content);
+    console.log(state.title, state.content);
     clearInput();
   };
 
   const clearInput = () => {
-    setTitle("");
-    setContent("");
+    setState({ title: "", content: "" });
   };
-  // const onPress = (e) => {
-  //       e.preventDefault();
-  //   if ((e.key = "Enter")) {
-  //     onSubmit();
-  //   }
-  //   clearInput();
-  // };
 
   return (
     <div className="App">
       <DiaryEditor />
       <form onSubmit={onSubmit}>
         <div>
-          <input value={title} onChange={onChangeTitle} />
+          <input
+            value={state.title}
+            onChange={(e) => {
+              setState({ title: e.target.value, content: state.content });
+            }}
+          />
         </div>
         <div>
-          <textarea value={content} onChange={onChangeContent} />
+          <textarea
+            value={state.content}
+            onChange={(e) => {
+              setState({ title: state.title, content: e.target.value });
+            }}
+          />
         </div>
         <div>
           <select>
