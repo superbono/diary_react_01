@@ -14,10 +14,28 @@ function App() {
     setContent(e.target.value);
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(title, content);
+    clearInput();
+  };
+
+  const clearInput = () => {
+    setTitle("");
+    setContent("");
+  };
+  // const onPress = (e) => {
+  //       e.preventDefault();
+  //   if ((e.key = "Enter")) {
+  //     onSubmit();
+  //   }
+  //   clearInput();
+  // };
+
   return (
     <div className="App">
       <DiaryEditor />
-      <form>
+      <form onSubmit={onSubmit}>
         <div>
           <input value={title} onChange={onChangeTitle} />
         </div>
