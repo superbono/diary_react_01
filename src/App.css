@@ -65,3 +65,17 @@ textarea {
 .container select {
   width: 318px;
 }
+
+.input_title:focus,
+.input_author:focus,
+.area_content:focus {
+  background: rgb(230, 228, 228);
+  outline: none;
+}
+
+.input_title:focus::placeholder,
+.input_author:focus::placeholder,
+.area_content:focus::placeholder {
+  color: #000;
+  font-weight: bold;
+}

@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Header from "./components/Header";
 
 function App() {
@@ -9,14 +9,29 @@ function App() {
     author: "",
     emotion: 1,
   });
+  const titleFocus = useRef();
+  const contentFocus = useRef();
+  const authorFocus = useRef();
 
   const onSubmit = (e) => {
-    if (state.title === "" || state.content === "" || state.author === "") {
-      alert("값이 없습니다.");
+    e.preventDefault();
+    if (state.title.length < 1) {
+      // alert("제목을 입력해주세요");
+      titleFocus.current.focus();
+      return;
+    } else if (state.content.length < 4) {
+      // alert("내용을 5자 이상 입력해주세요");
+      contentFocus.current.focus();
+      return;
+    } else if (state.author.length < 2) {
+      // alert("작성자를 입력해주세요");
+      authorFocus.current.focus();
+      return;
     } else {
       e.preventDefault();
       console.log(state);
       clearInput();
+      alert("저장이 완료되었습니다.");
     }
   };
 
@@ -36,6 +51,8 @@ function App() {
           <label>제목:</label>
           <input
             name="title"
+            className="input_title"
+            ref={titleFocus}
             value={state.title}
             onChange={handleChange}
             placeholder="제목을 입력하세요"
@@ -45,6 +62,8 @@ function App() {
           <label style={{ verticalAlign: 110 }}>내용:</label>
           <textarea
             name="content"
+            className="area_content"
+            ref={contentFocus}
             value={state.content}
             onChange={handleChange}
             placeholder="내용을 입력하세요."
@@ -54,6 +73,8 @@ function App() {
           <label>누구:</label>
           <input
             name="author"
+            className="input_author"
+            ref={authorFocus}
             value={state.author}
             onChange={handleChange}
             placeholder="작성자를 입력하세요."
