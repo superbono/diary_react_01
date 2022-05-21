@@ -1,11 +1,17 @@
 import ListItem from "./ListItem";
 
-const List = ({ list, onRemove }) => {
+const List = ({ list, onRemove, onEdit }) => {
   return (
     <div className="boardList">
       <div>
         {list.map((item) => (
-          <ListItem key={item.id} item={list} {...item} itemRemove={onRemove} />
+          <ListItem
+            key={item.id}
+            item={list}
+            {...item}
+            itemRemove={onRemove}
+            itemEdit={onEdit}
+          />
         ))}
       </div>
       <h5>

@@ -76,6 +76,10 @@ function App() {
     setData(refreshData);
   };
 
+  const onEdit = () => {
+    console.log("edit");
+  };
+
   return (
     <div className="App">
       <Title />
@@ -99,7 +103,7 @@ function App() {
       )}
 
       <div className="app-list">
-        <List list={data} onRemove={onRemove} />
+        <List list={data} onRemove={onRemove} onEdit={onEdit} />
       </div>
     </div>
   );

@@ -92,6 +92,11 @@ textarea {
 
 .container label {
   margin-right: 7px;
+  font-size: 15px;
+}
+
+.container .content-label {
+  vertical-align: 110px;
 }
 
 .container select {
@@ -142,6 +147,19 @@ textarea {
   text-align: left;
   width: 68%;
   border-radius: 5px;
+}
+
+.listItem .input_title {
+  width: 100px;
+}
+
+.listItem .input_content {
+  width: 300px;
+  height: 40px;
+}
+
+.listItem .content-label {
+  vertical-align: 40px !important;
 }
 
 .listItem .info {

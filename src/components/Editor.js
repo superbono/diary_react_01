@@ -57,7 +57,7 @@ const Editor = ({ onCreate }) => {
           />
         </div>
         <div className="container">
-          <label style={{ verticalAlign: 110 }}>내용:</label>
+          <label className="content-label">내용:</label>
           <textarea
             name="content"
             className="area_content"

@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 const ListItem = ({
   id,
   title,
@@ -6,10 +8,23 @@ const ListItem = ({
   emotion,
   create_date,
   itemRemove,
+  itemEdit,
 }) => {
+  const [isEdit, setIsEdit] = useState(false);
+
   const onRemove = () => {
     if (window.confirm(`이 게시물을 삭제하시겠습니까?`));
     itemRemove(id);
+  };
+
+  const onEdit = () => {
+    itemEdit();
+    setIsEdit(!isEdit);
+  };
+
+  const onEditSave = () => {
+    alert("수정완료");
+    setIsEdit(!isEdit);
   };
 
   return (
@@ -17,13 +32,48 @@ const ListItem = ({
       <div>
         <div className="list_content">
           <div className="list_btn_box">
-            <button>수정</button>
-            <button onClick={onRemove}>삭제</button>
+            {isEdit ? (
+              <>
+                <button onClick={onEditSave}>저장</button>
+                <button onClick={onEdit}>취소</button>
+              </>
+            ) : (
+              <>
+                <button onClick={onEdit}>수정</button>
+                <button onClick={onRemove}>삭제</button>
+              </>
+            )}
           </div>
           <div>
-            제목 : <span className="list_title">{title}</span>
+            제목 :{" "}
+            {isEdit ? (
+              <>
+                <input className="input_title" type="text" value={title} />
+              </>
+            ) : (
+              <>
+                <span>{title}</span>
+              </>
+            )}
           </div>
-          <div> 내용: {content}</div>
+          <div>
+            {isEdit ? (
+              <div style={{ marginTop: 5 }}>
+                <span className="content-label">내용 : </span>
+                <textarea
+                  className="input_content"
+                  type="text"
+                  value={content}
+                  style={{ padding: 0 }}
+                />
+              </div>
+            ) : (
+              <>
+                <span>내용 : </span>
+                <span>{content}</span>
+              </>
+            )}
+          </div>
         </div>
         <div className="info">
           <span>
