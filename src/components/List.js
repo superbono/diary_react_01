@@ -1,12 +1,11 @@
 import ListItem from "./ListItem";
-// import Division from "./Division";
 
 const List = ({ list }) => {
   return (
     <div className="boardList">
-      <br />
+      {/* <br />
       <h2>리스트</h2>
-      <br />
+      <br /> */}
       <div>
         {list.map((item) => (
           <ListItem key={item.id} item={list} {...item} />

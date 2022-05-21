@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/Header";
 import List from "./components/List";
 
@@ -47,11 +47,36 @@ const dummyList = [
 ];
 
 function App() {
+  const [status, setStatus] = useState(false);
+
+  const onStatusChanged = () => {
+    setStatus(!status);
+  };
+
   return (
     <div className="App">
-      <div className="app-header">
-        <Header />
+      <div className="main">
+        <h1>= D = I = A = R = Y =</h1>
       </div>
+      <div className="app-btn-container">
+        {status ? (
+          <button className="app-hidden" onClick={onStatusChanged}>
+            작성폼접기
+          </button>
+        ) : (
+          <button className="app-write" onClick={onStatusChanged}>
+            글작성하기
+          </button>
+        )}
+      </div>
+      {status ? (
+        <div className="app-header">
+          <Header />
+        </div>
+      ) : (
+        ""
+      )}
+
       <div className="app-list">
         <List list={dummyList} />
       </div>

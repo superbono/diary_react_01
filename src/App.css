@@ -3,10 +3,39 @@
   padding: 0;
 }
 
+.main {
+  margin-top: 45px;
+}
+
+.app-btn-container {
+  /* margin-top: 5px; */
+  margin-left: 73%;
+}
+
+.App h1 {
+  text-align: center;
+}
+
+.app-btn-container .app-write {
+  border: none;
+  padding: 15px;
+  background: wheat;
+  border-radius: 5px;
+}
+
+.app-btn-container .app-hidden {
+  border: none;
+  padding: 15px;
+  background: rgb(246, 178, 119);
+  border-radius: 5px;
+}
+
 .app-header {
   text-align: center;
-  border: 1px solid #000;
+  border: 1px dotted #000;
   padding: 30px;
+  width: 50%;
+  margin: 10px 0 0 350px;
 }
 
 .app-header input,
@@ -27,7 +56,7 @@ textarea {
 .btn-container-submit button,
 .btn-container-reset button {
   margin: 2px auto !important;
-  width: 360px;
+  width: 380px;
   height: 30px;
   border-radius: 5px;
   cursor: pointer;
@@ -85,11 +114,12 @@ textarea {
 }
 
 .division {
-  border-bottom: 1px solid #000;
+  margin-top: 10px;
 }
 
 .boardList {
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
+  /* background: rgb(244, 244, 244); */
   margin-top: 30px;
 }
 
@@ -103,10 +133,10 @@ textarea {
 
 .listItem {
   background-color: rgb(240, 240, 240);
-  margin: 0 300px 20px 300px;
+  margin: 10px 15%;
   padding: 20px;
   text-align: left;
-  width: 600px;
+  width: 68%;
   border-radius: 5px;
 }
 
