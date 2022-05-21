@@ -8,7 +8,6 @@ const ListItem = ({
   itemRemove,
 }) => {
   const onRemove = () => {
-    // alert(id);
     if (window.confirm(`이 게시물을 삭제하시겠습니까?`));
     itemRemove(id);
   };
@@ -35,7 +34,6 @@ const ListItem = ({
             작성일자: {new Date(create_date).toLocaleString()}
           </span>
         </div>
-        {/* <Division /> */}
       </div>
     </div>
   );

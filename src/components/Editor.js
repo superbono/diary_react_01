@@ -31,7 +31,7 @@ const Editor = ({ onCreate }) => {
       onCreate(state.title, state.content, state.author, state.emotion);
       console.log(state);
       clearInput();
-      // alert("저장이 완료되었습니다.");
+      alert("저장이 완료되었습니다.");
     }
   };
 

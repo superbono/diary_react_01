@@ -3,9 +3,6 @@ import ListItem from "./ListItem";
 const List = ({ list, onRemove }) => {
   return (
     <div className="boardList">
-      {/* <br />
-      <h2>리스트</h2>
-      <br /> */}
       <div>
         {list.map((item) => (
           <ListItem key={item.id} item={list} {...item} itemRemove={onRemove} />
