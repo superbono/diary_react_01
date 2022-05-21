@@ -3,6 +3,10 @@ const ListItem = ({ id, title, content, author, emotion, create_date }) => {
     <div className="listItem">
       <div>
         <div className="list_content">
+          <div className="list_btn_box">
+            <button>수정</button>
+            <button>삭제</button>
+          </div>
           <div>
             제목 : <span className="list_title">{title}</span>
           </div>

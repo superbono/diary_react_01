@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import "../../src/App.css";
 
-const Header = () => {
+const Editor = ({ onCreate }) => {
   const [state, setState] = useState({
     title: "",
     content: "",
@@ -28,6 +28,7 @@ const Header = () => {
       return;
     } else {
       e.preventDefault();
+      onCreate(state.title, state.content, state.author, state.emotion);
       console.log(state);
       clearInput();
       alert("저장이 완료되었습니다.");
@@ -42,7 +43,7 @@ const Header = () => {
     setState({ title: "", content: "", author: "", emotion: 1 });
   };
   return (
-    <div className="Header">
+    <div className="Editor">
       <form onSubmit={onSubmit}>
         <div className="container">
           <label>제목:</label>
@@ -100,4 +101,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Editor;

@@ -21,6 +21,7 @@
   padding: 15px;
   background: wheat;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .app-btn-container .app-hidden {
@@ -28,11 +29,13 @@
   padding: 15px;
   background: rgb(246, 178, 119);
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .app-header {
   text-align: center;
   border: 1px dotted #000;
+  border-radius: 5px;
   padding: 30px;
   width: 50%;
   margin: 10px 0 0 350px;
@@ -78,12 +81,12 @@ textarea {
   color: #fff;
 }
 
-.Header {
+.Editor {
   margin-bottom: 15px;
   font-size: 25px;
 }
 
-.Header h2 {
+.Editor h2 {
   color: #000;
 }
 
@@ -132,7 +135,8 @@ textarea {
 }
 
 .listItem {
-  background-color: rgb(240, 240, 240);
+  border: 2px solid rgb(195, 194, 194);
+  background-color: #fff;
   margin: 10px 15%;
   padding: 20px;
   text-align: left;
@@ -160,4 +164,43 @@ textarea {
 
 .listItem .list_title {
   font-weight: bold;
+}
+
+.list_btn_box {
+  float: right;
+}
+
+.list_btn_box button:first-child {
+  border: none;
+  border: 1px solid green;
+  border-radius: 5px;
+  color: green;
+  margin-right: 5px;
+  cursor: pointer;
+  background: #fff;
+}
+
+.list_btn_box button:first-child:hover {
+  background: green;
+  color: #fff;
+}
+
+.list_btn_box button:last-child {
+  border: none;
+  border: 1px solid tomato;
+  border-radius: 5px;
+  color: tomato;
+  margin-right: 5px;
+  cursor: pointer;
+  background: #fff;
+}
+
+.list_btn_box button:last-child:hover {
+  background: tomato;
+  color: #fff;
+}
+
+.list_btn_box button {
+  width: 70px;
+  height: 30px;
 }
