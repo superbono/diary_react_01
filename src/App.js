@@ -71,6 +71,11 @@ function App() {
     setData([newItem, ...data]);
   };
 
+  const onRemove = (id) => {
+    const refreshData = data.filter((item) => item.id !== id);
+    setData(refreshData);
+  };
+
   return (
     <div className="App">
       <Title />
@@ -94,7 +99,7 @@ function App() {
       )}
 
       <div className="app-list">
-        <List list={data} />
+        <List list={data} onRemove={onRemove} />
       </div>
     </div>
   );

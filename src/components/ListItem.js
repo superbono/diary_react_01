@@ -1,11 +1,25 @@
-const ListItem = ({ id, title, content, author, emotion, create_date }) => {
+const ListItem = ({
+  id,
+  title,
+  content,
+  author,
+  emotion,
+  create_date,
+  itemRemove,
+}) => {
+  const onRemove = () => {
+    // alert(id);
+    if (window.confirm(`이 게시물을 삭제하시겠습니까?`));
+    itemRemove(id);
+  };
+
   return (
     <div className="listItem">
       <div>
         <div className="list_content">
           <div className="list_btn_box">
             <button>수정</button>
-            <button>삭제</button>
+            <button onClick={onRemove}>삭제</button>
           </div>
           <div>
             제목 : <span className="list_title">{title}</span>
