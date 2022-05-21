@@ -15,6 +15,7 @@ const List = ({ list }) => {
       <h5>
         <span>{list.length}</span>개의 리스트가 있습니다.
       </h5>
+      <br />
     </div>
   );
 };

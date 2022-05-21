@@ -103,9 +103,11 @@ textarea {
 
 .listItem {
   background-color: rgb(240, 240, 240);
-  margin-bottom: 20px;
+  margin: 0 300px 20px 300px;
   padding: 20px;
   text-align: left;
+  width: 600px;
+  border-radius: 5px;
 }
 
 .listItem .info {
