@@ -11,6 +11,10 @@ const ListItem = ({
   itemEdit,
 }) => {
   const [isEdit, setIsEdit] = useState(false);
+  const [localState, setLocalState] = useState({
+    title: title,
+    content: content,
+  });
 
   const onRemove = () => {
     if (window.confirm(`이 게시물을 삭제하시겠습니까?`));
@@ -26,6 +30,10 @@ const ListItem = ({
     alert("수정완료");
     setIsEdit(!isEdit);
   };
+
+  //   const handleChange = (e) => {
+  //     setLocalState({ ...localState, [e.target.name]: e.target.value });
+  //   };
 
   return (
     <div className="listItem">
@@ -48,7 +56,15 @@ const ListItem = ({
             제목 :{" "}
             {isEdit ? (
               <>
-                <input className="input_title" type="text" value={title} />
+                <input
+                  name="edit_title"
+                  className="input_title"
+                  type="text"
+                  onChange={(e) => {
+                    setLocalState(e.target.value);
+                  }}
+                  value={localState.title}
+                />
               </>
             ) : (
               <>
@@ -61,9 +77,13 @@ const ListItem = ({
               <div style={{ marginTop: 5 }}>
                 <span className="content-label">내용 : </span>
                 <textarea
+                  name="edit_content"
                   className="input_content"
                   type="text"
-                  value={content}
+                  value={localState.content}
+                  onChange={(e) => {
+                    setLocalState(e.target.value);
+                  }}
                   style={{ padding: 0 }}
                 />
               </div>
