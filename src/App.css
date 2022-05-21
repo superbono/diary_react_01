@@ -188,7 +188,7 @@ textarea {
   float: right;
 }
 
-.list_btn_box button:first-child {
+.list_btn_box .save {
   border: none;
   border: 1px solid green;
   border-radius: 5px;
@@ -198,12 +198,12 @@ textarea {
   background: #fff;
 }
 
-.list_btn_box button:first-child:hover {
+.list_btn_box .save:hover {
   background: green;
   color: #fff;
 }
 
-.list_btn_box button:last-child {
+.list_btn_box .delete {
   border: none;
   border: 1px solid tomato;
   border-radius: 5px;
@@ -213,7 +213,7 @@ textarea {
   background: #fff;
 }
 
-.list_btn_box button:last-child:hover {
+.list_btn_box .delete:hover {
   background: tomato;
   color: #fff;
 }

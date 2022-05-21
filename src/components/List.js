@@ -10,7 +10,7 @@ const List = ({ list, onRemove, onEdit }) => {
             item={list}
             {...item}
             itemRemove={onRemove}
-            itemEdit={onEdit}
+            onEdit={onEdit}
           />
         ))}
       </div>

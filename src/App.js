@@ -76,8 +76,14 @@ function App() {
     setData(refreshData);
   };
 
-  const onEdit = () => {
-    console.log("edit");
+  const onEdit = (targetId, newItemTitle, newItemContent) => {
+    setData(
+      data.map((item) =>
+        item.id === targetId
+          ? { ...item, title: newItemTitle, content: newItemContent }
+          : item
+      )
+    );
   };
 
   return (
