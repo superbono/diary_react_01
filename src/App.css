@@ -3,24 +3,24 @@
   padding: 0;
 }
 
-.App {
+.app-header {
   text-align: center;
   border: 1px solid #000;
   padding: 30px;
 }
 
-.App input,
+.app-header input,
 textarea {
   margin-bottom: 10px;
   width: 300px;
   padding: 7px;
 }
 
-.App textarea {
+.app-header textarea {
   height: 100px;
 }
 
-.App select {
+.app-header select {
   margin-bottom: 10px;
 }
 
@@ -77,5 +77,55 @@ textarea {
 .input_author:focus::placeholder,
 .area_content:focus::placeholder {
   color: #000;
+  font-weight: bold;
+}
+
+.app-list {
+  text-align: center;
+}
+
+.division {
+  border-bottom: 1px solid #000;
+}
+
+.boardList {
+  border: 1px solid #000;
+  margin-top: 30px;
+}
+
+.boardList h5 {
+  font-weight: 300;
+}
+
+.boardList h5 span {
+  font-weight: bold;
+}
+
+.listItem {
+  background-color: rgb(240, 240, 240);
+  margin-bottom: 20px;
+  padding: 20px;
+  text-align: left;
+}
+
+.listItem .info {
+  border-top: 1px solid #000;
+  padding: 5px;
+}
+
+.listItem div:first-child {
+  margin-bottom: 2px;
+}
+
+.listItem .list_content {
+  margin-bottom: 5px !important;
+  padding: 5px;
+}
+
+.listItem .date {
+  color: gray;
+}
+
+.listItem .list_title {
   font-weight: bold;
 }
