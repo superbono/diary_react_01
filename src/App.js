@@ -34,7 +34,12 @@ function App() {
       <form onSubmit={onSubmit}>
         <div className="container">
           <label>제목:</label>
-          <input name="title" value={state.title} onChange={handleChange} />
+          <input
+            name="title"
+            value={state.title}
+            onChange={handleChange}
+            placeholder="제목을 입력하세요"
+          />
         </div>
         <div className="container">
           <label style={{ verticalAlign: 110 }}>내용:</label>
@@ -42,11 +47,17 @@ function App() {
             name="content"
             value={state.content}
             onChange={handleChange}
+            placeholder="내용을 입력하세요."
           />
         </div>
         <div className="container">
           <label>누구:</label>
-          <input name="author" value={state.author} onChange={handleChange} />
+          <input
+            name="author"
+            value={state.author}
+            onChange={handleChange}
+            placeholder="작성자를 입력하세요."
+          />
         </div>
         <div className="container">
           <label>감정:</label>
