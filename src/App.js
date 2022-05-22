@@ -1,61 +1,40 @@
 import "./App.css";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Editor from "./components/Editor";
 import List from "./components/List";
 import Title from "./components/Title";
 
-// const dummyList = [
-//   {
-//     id: 1,
-//     title: "test1",
-//     content: "test1의 내용입니다.",
-//     author: "작성자1",
-//     emotion: 3,
-//     create_date: new Date().getTime(),
-//   },
-//   {
-//     id: 2,
-//     title: "test2",
-//     content: "test2의 내용입니다.",
-//     author: "작성자2",
-//     emotion: 2,
-//     create_date: new Date().getTime(),
-//   },
-//   {
-//     id: 3,
-//     title: "test3",
-//     content: "test3의 내용입니다.",
-//     author: "작성자3",
-//     emotion: 5,
-//     create_date: new Date().getTime(),
-//   },
-//   {
-//     id: 4,
-//     title: "test4",
-//     content: "test4의 내용입니다.",
-//     author: "작성자4",
-//     emotion: 4,
-//     create_date: new Date().getTime(),
-//   },
-//   {
-//     id: 5,
-//     title: "test5",
-//     content: "test5의 내용입니다.",
-//     author: "작성자5",
-//     emotion: 1,
-//     create_date: new Date().getTime(),
-//   },
-// ];
-
 function App() {
   const [data, setData] = useState([]);
   const [status, setStatus] = useState(false);
+  const data_id = useRef(1);
+
+  const getData = async () => {
+    const res = await fetch(
+      "https://jsonplaceholder.typicode.com/comments"
+    ).then((res) => res.json());
+
+    const initData = res.slice(0, 20).map((item) => {
+      return {
+        title: item.email,
+        content: item.body,
+        author: item.name,
+        emotion: Math.trunc(Math.random() * 5 + 1),
+        create_date: new Date().getTime(),
+        id: data_id.current++,
+      };
+    });
+
+    setData(initData);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   const onStatusChanged = () => {
     setStatus(!status);
   };
-
-  const data_id = useRef(1);
 
   const onCreate = (title, content, author, emotion) => {
     const create_date = new Date().getTime();

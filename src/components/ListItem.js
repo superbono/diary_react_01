@@ -58,19 +58,19 @@ const ListItem = ({
           <div className="list_btn_box">
             {isEdit ? (
               <>
-                <button class="delete" onClick={onEditFormClear}>
+                <button className="delete" onClick={onEditFormClear}>
                   취소
                 </button>
-                <button class="save" onClick={onEditSave}>
+                <button className="save" onClick={onEditSave}>
                   저장
                 </button>
               </>
             ) : (
               <>
-                <button class="save" onClick={onEditToggle}>
+                <button className="save" onClick={onEditToggle}>
                   수정
                 </button>
-                <button class="delete" onClick={onRemove}>
+                <button className="delete" onClick={onRemove}>
                   삭제
                 </button>
               </>
