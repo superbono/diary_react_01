@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import Editor from "./components/Editor";
 import List from "./components/List";
 import Title from "./components/Title";
@@ -65,6 +65,16 @@ function App() {
     );
   };
 
+  const getListAnalysis = useMemo(() => {
+    console.log("일기 분석중...");
+    const goodCount = data.filter((item) => item.emotion >= 3).length;
+    const badCount = data.length - goodCount;
+    const goodRatio = (goodCount / data.length) * 100;
+    return { goodCount, badCount, goodRatio };
+  }, [data.length]);
+
+  const { goodCount, badCount, goodRatio } = getListAnalysis;
+
   return (
     <div className="App">
       <Title />
@@ -86,7 +96,12 @@ function App() {
       ) : (
         ""
       )}
-
+      <div style={{ float: "right", marginRight: -40 }}>
+        <div style={{ marginRight: 200 }}>전체 일기 갯수 : {data.length}</div>
+        <div style={{ marginRight: 200 }}>좋아요 감정 갯수 : {goodCount}</div>
+        <div style={{ marginRight: 200 }}>나빠요 감정 갯수 : {badCount}</div>
+        <div style={{ marginRight: 200 }}>좋아요 비율 : {goodRatio}%</div>
+      </div>
       <div className="app-list">
         <List list={data} onRemove={onRemove} onEdit={onEdit} />
       </div>
