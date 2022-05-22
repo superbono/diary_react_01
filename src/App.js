@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect, useMemo } from "react";
 import Editor from "./components/Editor";
 import List from "./components/List";
 import Title from "./components/Title";
+import Optimize from "./components/Optimize";
 
 function App() {
   const [data, setData] = useState([]);
@@ -66,7 +67,7 @@ function App() {
   };
 
   const getListAnalysis = useMemo(() => {
-    console.log("일기 분석중...");
+    // console.log("일기 분석중...");
     const goodCount = data.filter((item) => item.emotion >= 3).length;
     const badCount = data.length - goodCount;
     const goodRatio = (goodCount / data.length) * 100;
@@ -77,6 +78,7 @@ function App() {
 
   return (
     <div className="App">
+      <Optimize />
       <Title />
       <div className="app-btn-container">
         {status ? (
