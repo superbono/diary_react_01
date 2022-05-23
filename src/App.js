@@ -54,23 +54,33 @@ function App() {
     };
     data_id.current += 1;
     // setData([newItem, ...data]);
+    // setData((data) => [newItem, ...data]);
     setData((data) => [newItem, ...data]);
   }, []);
 
-  const onRemove = (id) => {
-    const refreshData = data.filter((item) => item.id !== id);
-    setData(refreshData);
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const onRemove = useCallback((id) => {
+    // const refreshData = data.filter((item) => item.id !== id);
+    // setData(refreshData);
+    setData((data) => data.filter((item) => item.id !== id));
+  }, []);
 
-  const onEdit = (targetId, newItemTitle, newItemContent) => {
-    setData(
+  const onEdit = useCallback((targetId, newItemTitle, newItemContent) => {
+    // setData(
+    //   data.map((item) =>
+    //     item.id === targetId
+    //       ? { ...item, title: newItemTitle, content: newItemContent }
+    //       : item
+    //   )
+    // );
+    setData((data) =>
       data.map((item) =>
         item.id === targetId
           ? { ...item, title: newItemTitle, content: newItemContent }
           : item
       )
     );
-  };
+  }, []);
 
   const getListAnalysis = useMemo(() => {
     // console.log("일기 분석중...");
@@ -78,7 +88,6 @@ function App() {
     const badCount = data.length - goodCount;
     const goodRatio = (goodCount / data.length) * 100;
     return { goodCount, badCount, goodRatio };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data.length]);
 
   const { goodCount, badCount, goodRatio } = getListAnalysis;
@@ -98,13 +107,13 @@ function App() {
           </button>
         )}
       </div>
-      {/* {status ? ( */}
-      <div className="app-header">
-        <Editor onCreate={onCreate} />
-      </div>
-      {/* ) : (
+      {status ? (
+        <div className="app-header">
+          <Editor onCreate={onCreate} />
+        </div>
+      ) : (
         ""
-      )} */}
+      )}
       <div style={{ float: "right", marginRight: -40 }}>
         <div style={{ marginRight: 200 }}>전체 일기 갯수 : {data.length}</div>
         <div style={{ marginRight: 200 }}>좋아요 감정 갯수 : {goodCount}</div>

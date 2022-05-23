@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const ListItem = ({
   id,
@@ -7,26 +7,30 @@ const ListItem = ({
   author,
   emotion,
   create_date,
-  itemRemove,
   onEdit,
+  onRemove,
 }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [localTitle, setLocalTitle] = useState(title);
   const [localContent, setLocalContent] = useState(content);
-  //   const [localState, setLocalState] = useState({
-  //     title: title,
-  //     content: content,
-  //   });
+
   const localInputTitle = useRef();
   const localInputContent = useRef();
 
-  const onRemove = () => {
-    if (window.confirm(`이 게시물을 삭제하시겠습니까?`));
-    itemRemove(id);
+  useEffect(() => {
+    console.log(`${id}번째 아이템렌더`);
+  }, []);
+
+  const onRemoveItem = () => {
+    console.log(`${id}번째 아이템삭제`);
+    if (window.confirm(`이 게시물을 삭제하시겠습니까?`)) {
+      onRemove(id);
+    }
   };
 
   const onEditToggle = () => {
     setIsEdit(!isEdit);
+    console.log(`${id}번째 아이템수정`);
   };
 
   const onEditSave = () => {
@@ -70,7 +74,7 @@ const ListItem = ({
                 <button className="save" onClick={onEditToggle}>
                   수정
                 </button>
-                <button className="delete" onClick={onRemove}>
+                <button className="delete" onClick={onRemoveItem}>
                   삭제
                 </button>
               </>
@@ -135,4 +139,4 @@ const ListItem = ({
   );
 };
 
-export default ListItem;
+export default React.memo(ListItem);

@@ -9,7 +9,7 @@ const List = ({ list, onRemove, onEdit }) => {
             key={item.id}
             item={list}
             {...item}
-            itemRemove={onRemove}
+            onRemove={onRemove}
             onEdit={onEdit}
           />
         ))}

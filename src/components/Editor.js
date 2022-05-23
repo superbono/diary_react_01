@@ -2,9 +2,9 @@ import React, { useState, useRef, useEffect } from "react";
 import "../../src/App.css";
 
 const Editor = ({ onCreate }) => {
-  useEffect(() => {
-    console.log("렌더");
-  });
+  // useEffect(() => {
+  //   console.log("렌더");
+  // });
 
   const [state, setState] = useState({
     title: "",
