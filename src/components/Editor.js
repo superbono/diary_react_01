@@ -1,7 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useContext } from "react";
 import "../../src/App.css";
+import { AppDispatchContext } from "../App";
 
-const Editor = ({ onCreate }) => {
+const Editor = () => {
+  const { onCreate } = useContext(AppDispatchContext);
   // useEffect(() => {
   //   console.log("렌더");
   // });

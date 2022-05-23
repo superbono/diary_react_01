@@ -1,21 +1,18 @@
+import { useContext } from "react";
+import { AppStateContext } from "../App";
 import ListItem from "./ListItem";
 
-const List = ({ list, onRemove, onEdit }) => {
+const List = () => {
+  const appList = useContext(AppStateContext);
   return (
     <div className="boardList">
       <div>
-        {list.map((item) => (
-          <ListItem
-            key={item.id}
-            item={list}
-            {...item}
-            onRemove={onRemove}
-            onEdit={onEdit}
-          />
+        {appList.map((item) => (
+          <ListItem key={item.id} {...item} />
         ))}
       </div>
       <h5>
-        <span>{list.length}</span>개의 리스트가 있습니다.
+        <span>{appList.length}</span>개의 리스트가 있습니다.
       </h5>
       <br />
     </div>

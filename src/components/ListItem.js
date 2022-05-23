@@ -1,15 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
+import { AppDispatchContext } from "../App";
 
-const ListItem = ({
-  id,
-  title,
-  content,
-  author,
-  emotion,
-  create_date,
-  onEdit,
-  onRemove,
-}) => {
+const ListItem = ({ id, title, content, author, emotion, create_date }) => {
+  const { onRemove, onEdit } = useContext(AppDispatchContext);
+
   const [isEdit, setIsEdit] = useState(false);
   const [localTitle, setLocalTitle] = useState(title);
   const [localContent, setLocalContent] = useState(content);
