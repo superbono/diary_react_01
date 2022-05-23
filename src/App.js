@@ -1,5 +1,11 @@
 import "./App.css";
-import React, { useState, useRef, useEffect, useMemo } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useMemo,
+  useCallback,
+} from "react";
 import Editor from "./components/Editor";
 import List from "./components/List";
 import Title from "./components/Title";
@@ -36,7 +42,7 @@ function App() {
     setStatus(!status);
   };
 
-  const onCreate = (title, content, author, emotion) => {
+  const onCreate = useCallback((title, content, author, emotion) => {
     const create_date = new Date().getTime();
     const newItem = {
       id: data_id.current,
@@ -47,8 +53,9 @@ function App() {
       create_date,
     };
     data_id.current += 1;
-    setData([newItem, ...data]);
-  };
+    // setData([newItem, ...data]);
+    setData((data) => [newItem, ...data]);
+  }, []);
 
   const onRemove = (id) => {
     const refreshData = data.filter((item) => item.id !== id);
@@ -71,6 +78,7 @@ function App() {
     const badCount = data.length - goodCount;
     const goodRatio = (goodCount / data.length) * 100;
     return { goodCount, badCount, goodRatio };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data.length]);
 
   const { goodCount, badCount, goodRatio } = getListAnalysis;
@@ -90,13 +98,13 @@ function App() {
           </button>
         )}
       </div>
-      {status ? (
-        <div className="app-header">
-          <Editor onCreate={onCreate} />
-        </div>
-      ) : (
+      {/* {status ? ( */}
+      <div className="app-header">
+        <Editor onCreate={onCreate} />
+      </div>
+      {/* ) : (
         ""
-      )}
+      )} */}
       <div style={{ float: "right", marginRight: -40 }}>
         <div style={{ marginRight: 200 }}>전체 일기 갯수 : {data.length}</div>
         <div style={{ marginRight: 200 }}>좋아요 감정 갯수 : {goodCount}</div>
