@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 
 const ListItem = ({
   id,
@@ -17,9 +17,9 @@ const ListItem = ({
   const localInputTitle = useRef();
   const localInputContent = useRef();
 
-  useEffect(() => {
-    console.log(`${id}번째 아이템렌더`);
-  }, []);
+  // useEffect(() => {
+  //   console.log(`${id}번째 아이템렌더`);
+  // }, []);
 
   const onRemoveItem = () => {
     console.log(`${id}번째 아이템삭제`);
