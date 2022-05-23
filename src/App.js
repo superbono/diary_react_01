@@ -3,7 +3,6 @@ import React, { useState, useRef, useEffect, useMemo } from "react";
 import Editor from "./components/Editor";
 import List from "./components/List";
 import Title from "./components/Title";
-import Optimize from "./components/Optimize";
 
 function App() {
   const [data, setData] = useState([]);
@@ -78,7 +77,7 @@ function App() {
 
   return (
     <div className="App">
-      <Optimize />
+      <div style={{ border: ".5px solid #000" }}></div>
       <Title />
       <div className="app-btn-container">
         {status ? (
